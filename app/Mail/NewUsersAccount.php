@@ -16,9 +16,11 @@ class NewUsersAccount extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public string $user;
+    
+    public function __construct($user)
     {
-        //
+        $this->user=$user;
     }
 
     /**
@@ -37,7 +39,8 @@ class NewUsersAccount extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'emails.new_user_account', // Ensure this view exists in resources/views/emails/new_user_account.blade.php
+            with: ['user' => $this->user], // Pass data to the view
         );
     }
 

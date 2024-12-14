@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class UserRoleRedirect
@@ -15,6 +16,23 @@ class UserRoleRedirect
      */
     public function handle(Request $request, Closure $next): Response
     {
+    if (Auth::check()) {
+            $userRole = Auth::user()->user_role;
+    
+            // Define role-based redirects
+            $redirects = [
+                'alumniHead' => '/alumnihead/dashboard',
+                'alumniOfficer' => '/alumniofficer/dashboard',
+                'alumni' => '/alumni/dashboard',
+                'registrar' => '/registrar/dashboard',
+            ];
+    
+            // Redirect if role exists in map
+            if (isset($redirects[$userRole])) {
+                return redirect($redirects[$userRole]);
+            }
+        }
+    
         return $next($request);
     }
 }

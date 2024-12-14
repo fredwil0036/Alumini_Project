@@ -31,7 +31,7 @@ class RegisteredUserController extends Controller
     {
 
         $userrole='admin';
-        $employee_id='alumni-10001';
+        $employee_id='alumni-40001';
         $request->validate([
             'first_name' => ['required', 'string', 'max:255'],
             'middle_name' => ['required', 'string', 'max:255'],

@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-registrarHead-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard') }}
@@ -14,4 +14,8 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+
+    <div class="font-semibold text-lg">
+        <p class=" text-orange-500">Hello Alumni Reigistrar</p>
+    </div>
+</x-registrarHead-layout>

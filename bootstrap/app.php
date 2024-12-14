@@ -11,7 +11,13 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        $middleware->alias([
+            'redirectRolePage'=>\App\Http\Middleware\UserRoleRedirect::class,
+            'alumniHead'=>\App\Http\Middleware\AlumniHead::class,
+            'alumniOfficer' => \App\Http\Middleware\AlumniOfficer::class,
+            'alumni' => \App\Http\Middleware\Alumni::class,
+            'registrar' => \App\Http\Middleware\Registrar::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
